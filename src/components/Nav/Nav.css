@@ -1,0 +1,19 @@
+.nav{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    /* width: 10%; */
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: grey;
+}
+
+
+.nav a{
+    text-decoration: none
+}
+
+.nav a.active{
+color:green
+}

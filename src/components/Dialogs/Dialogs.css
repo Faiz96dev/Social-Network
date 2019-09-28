@@ -1,0 +1,8 @@
+.dialogs{
+    display: flex;
+    flex-direction: row
+}
+
+.dialogs__messages{
+    padding-left: 30px;
+}

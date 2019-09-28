@@ -1,0 +1,9 @@
+.post__img{
+    height: 30px;
+    padding-right: 10px;
+}
+
+.post{
+    padding-top: 30px;
+    display: flex;
+}
