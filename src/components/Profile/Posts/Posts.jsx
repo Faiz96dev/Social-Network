@@ -2,22 +2,33 @@ import React from "react";
 import "./Posts.css";
 import Post from "./Post/Post";
 
+
+
 const Posts = props => {
+  console.log(props)
+  const newPosts = props.posts.map(data => (
+    <Post message={data.message} likeCount={data.likeCount} />
+  ));
+
   let newPost = React.createRef();
 
   let addPosts = () => {
-    props.addPost();
+    props.dispatch({
+      type: 'ADD_POST',
+
+    });
   };
 
   let onPostChange = () => {
     let text = newPost.current.value;
-    console.log(text);
-    props.updateNewPostText(text)
+props.dispatch({
+
+  type: 'UPDATE_NEW_POST_TEXT',
+  text: text
+})
   };
 
-  const newPosts = props.posts.map(data => (
-    <Post message={data.message} likeCount={data.likeCount} />
-  ));
+
 
   return (
     <div className="post_inp">

@@ -1,4 +1,5 @@
 let store = {
+  
   _state: {
     sidebar: {
       navFriendsData: [
@@ -53,41 +54,60 @@ let store = {
         { id: 5, message: "wd2hlam byeb " },
         { id: 6, message: "wqdoi  uwdnn" }
       ]
+    },
+    dispatch(action) {
+      if (action.type === "ADD_POST") {
+        let newPost = {
+          id: 5,
+          message: this._state.profilePage.newPostText,
+          likeCount: 0
+        };
+    
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = "";
+        this._callSubscriber(this._state);
+  
+      }
+      else if (action.type === 'UPDATE_NEW_POST_TEXT'){
+        this._state.profilePage.newPostText = action.newText;
+  
+        this._callSubscriber(this._state);
+      }
     }
   },
-
-  getState(){
-    return this._state;
-  },
-
   _callSubscriber() {
     console.log("State Updated");
   },
-  addPost() {
-    
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likeCount: 0
-    };
 
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this._callSubscriber(this._state);
-    
+  getState() {
+    return this._state
   },
-
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-
-    this._callSubscriber(this._state);
-  },
-
   subscribe(observer) {
     this._callSubscriber = observer;
+  },
+
+ 
+  dispatch(action) {
+    if (action.type === "ADD_POST") {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likeCount: 0
+      };
+  
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._callSubscriber(this._state);
+
+    }
+    else if (action.type === 'UPDATE_NEW_POST_TEXT'){
+      this._state.profilePage.newPostText = action.newText;
+
+      this._callSubscriber(this._state);
+    }
   }
 };
 
-window.store = store;
+
 
 export default store;
