@@ -5,9 +5,9 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux/state";
 
-let reranderTree = store => {
+let reranderTree = state => {
   ReactDOM.render(
-    <App state={store} dispatch={store.dispatch} />,
+    <App state={state} dispatch={store.dispatch.bind(store)} />,
 
     document.getElementById("root")
   );

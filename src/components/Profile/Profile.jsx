@@ -4,12 +4,13 @@ import Posts from "./Posts/Posts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = props => {
+
   return (
     <main className="profile">
       <ProfileInfo />
       <Posts
         dispatch={props.dispatch}
-        posts={props.posts}
+        profilePage={props.profilePage}
       />
     </main>
   );

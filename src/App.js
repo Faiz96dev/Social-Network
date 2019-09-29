@@ -9,7 +9,6 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
 const App = props => {
-  console.log(props)
   return (
     <BrowserRouter>
       <div className="App">
@@ -21,7 +20,7 @@ const App = props => {
             path="/profile"
             render={() => (
               <Profile
-                posts={props.state.profilePage.posts}
+                profilePage={props.state.profilePage}
                 dispatch={props.dispatch}
               />
             )}

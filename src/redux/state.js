@@ -1,5 +1,7 @@
+const ADD_POST = "ADD_POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+
 let store = {
-  
   _state: {
     sidebar: {
       navFriendsData: [
@@ -33,7 +35,7 @@ let store = {
         { id: 3, message: "wvkla ef", likeCount: 39 },
         { id: 4, message: "widwidffrfrfrf", likeCount: 4 }
       ],
-      newPostText: ""
+      newPostText: "123xxx"
     },
 
     messagePage: {
@@ -54,25 +56,6 @@ let store = {
         { id: 5, message: "wd2hlam byeb " },
         { id: 6, message: "wqdoi  uwdnn" }
       ]
-    },
-    dispatch(action) {
-      if (action.type === "ADD_POST") {
-        let newPost = {
-          id: 5,
-          message: this._state.profilePage.newPostText,
-          likeCount: 0
-        };
-    
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = "";
-        this._callSubscriber(this._state);
-  
-      }
-      else if (action.type === 'UPDATE_NEW_POST_TEXT'){
-        this._state.profilePage.newPostText = action.newText;
-  
-        this._callSubscriber(this._state);
-      }
     }
   },
   _callSubscriber() {
@@ -80,34 +63,33 @@ let store = {
   },
 
   getState() {
-    return this._state
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer;
   },
 
- 
   dispatch(action) {
-    if (action.type === "ADD_POST") {
+    if (action.type === ADD_POST) {
       let newPost = {
         id: 5,
         message: this._state.profilePage.newPostText,
         likeCount: 0
       };
-  
+
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText = "";
-      this._callSubscriber(this._state);
-
-    }
-    else if (action.type === 'UPDATE_NEW_POST_TEXT'){
+      this._callSubscriber(this.store);
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText;
-
       this._callSubscriber(this._state);
+      debugger
     }
   }
 };
 
+export const addPostActionCreator = () => ({type: ADD_POST})
 
+export const updateNewPostActionCreator = text => ({  type: UPDATE_NEW_POST_TEXT, newText: text})
 
 export default store;
