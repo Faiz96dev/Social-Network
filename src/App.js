@@ -9,12 +9,13 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
 const App = props => {
+debugger
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
         <div className="container">
-          <Nav friends={props.state.sidebar} />
+          <Nav friends={props.state} dispatch={props.dispatch} />
 
           <Route
             path="/profile"
@@ -27,7 +28,7 @@ const App = props => {
           />
           <Route
             path="/dialogs"
-            render={() => <Dialogs data={props.state.messagePage} />}
+            render={() => <Dialogs  dispatch={props.dispatch} data={props.state.messagePage} />}
           />
           <Route path="/music" component={Music} />
           <Route path="/news" component={News} />

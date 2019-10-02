@@ -4,7 +4,7 @@ import Posts from "./Posts/Posts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = props => {
-
+    debugger
   return (
     <main className="profile">
       <ProfileInfo />

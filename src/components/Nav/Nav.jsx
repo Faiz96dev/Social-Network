@@ -2,8 +2,9 @@ import React from "react";
 import "./Nav.css";
 import {NavLink} from 'react-router-dom';
 import Friends from './Friends/Friends'
+
 const Nav = (props) => {
-  
+  debugger
     // {console.log(props.friends)}
     return (
       <div className="nav">
@@ -19,7 +20,7 @@ const Nav = (props) => {
         <div>
           <NavLink to="/news">News</NavLink>
         </div>
-      <Friends data={props.friends.navFriendsData} />
+      <Friends dispatch={props.dispatch} data={props.friends.navFriendsData} />
       </div>
     );
   
