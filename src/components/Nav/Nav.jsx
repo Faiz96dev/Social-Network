@@ -4,8 +4,6 @@ import {NavLink} from 'react-router-dom';
 import Friends from './Friends/Friends'
 
 const Nav = (props) => {
-  debugger
-    // {console.log(props.friends)}
     return (
       <div className="nav">
         <div>
@@ -20,7 +18,7 @@ const Nav = (props) => {
         <div>
           <NavLink to="/news">News</NavLink>
         </div>
-      <Friends dispatch={props.dispatch} data={props.friends.navFriendsData} />
+      {/* <Friends dispatch={props.dispatch} data={props.friends.navFriendsData} /> */}
       </div>
     );
   

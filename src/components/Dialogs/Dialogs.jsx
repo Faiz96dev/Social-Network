@@ -3,29 +3,28 @@ import "./Dialogs.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
-import { sendMessageCreator, updateNewMessageBody } from "../../redux/dialogsReducer";
 
-let Dialogs;
-Dialogs = props => {
-    let dialogsElements = props.data.dialogsData.map(dialog => (
+const Dialogs = props => {
+      
+    let dialogsElements = props.state.dialogsData.map(dialog => (
         <DialogItem name={dialog.name} id={dialog.id}/>
     ));
-    let messageElements = props.data.messagesData.map(message => (
+    let messageElements = props.state.messagesData.map(message => (
         <Message message={message.message}/>
     ));
 
 
-    let newMessageBody = props.data.newMessageBody;
+    let newMessageBody = props.state.newMessageBody;
 
 
-    let sendMessage = () => {
-        props.dispatch(sendMessageCreator());
-
+    let sendM = () => {
+        props.sendMessage()
     };
 
     let onNewMessageClick = e => {
         let body = e.target.value;
-        props.dispatch(updateNewMessageBody(body));
+        props.onNewMessageClickC(body)
+        
 
     };
 
@@ -43,7 +42,7 @@ Dialogs = props => {
               placeholder="type some message"
               type="text"
           />{" "}
-                    <button onClick={sendMessage}>Send</button>
+                    <button onClick={sendM}>Send</button>
                 </div>
             </div>
         </div>

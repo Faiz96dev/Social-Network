@@ -1,17 +1,13 @@
 import React from "react";
 import "./Profile.css";
-import Posts from "./Posts/Posts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-
+import PostsContainer from "./Posts/PostsContainer"
 const Profile = props => {
     debugger
   return (
     <main className="profile">
       <ProfileInfo />
-      <Posts
-        dispatch={props.dispatch}
-        profilePage={props.profilePage}
-      />
+      <PostsContainer store={props.store} />
     </main>
   );
 };

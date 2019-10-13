@@ -7,6 +7,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import { Route, BrowserRouter } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = props => {
 debugger
@@ -15,20 +16,19 @@ debugger
       <div className="App">
         <Header />
         <div className="container">
-          <Nav friends={props.state} dispatch={props.dispatch} />
+          <Nav  />
 
           <Route
             path="/profile"
             render={() => (
               <Profile
-                profilePage={props.state.profilePage}
-                dispatch={props.dispatch}
+        
               />
             )}
           />
           <Route
             path="/dialogs"
-            render={() => <Dialogs  dispatch={props.dispatch} data={props.state.messagePage} />}
+            render={() => <DialogsContainer />}
           />
           <Route path="/music" component={Music} />
           <Route path="/news" component={News} />
