@@ -5,12 +5,12 @@ import Message from "./Message/Message";
 
 
 const Dialogs = props => {
-      
-    let dialogsElements = props.state.dialogsData.map(dialog => (
-        <DialogItem name={dialog.name} id={dialog.id}/>
+
+    let dialogsElements = props.state.messagePage.dialogsData.map(dialog => (
+        <DialogItem name={dialog.name}  id={dialog.id}/>
     ));
-    let messageElements = props.state.messagesData.map(message => (
-        <Message message={message.message}/>
+    let messageElements = props.state.messagePage.messagesData.map(message => (
+        <Message  message={message.message}/>
     ));
 
 
@@ -19,6 +19,7 @@ const Dialogs = props => {
 
     let sendM = () => {
         props.sendMessage()
+
     };
 
     let onNewMessageClick = e => {
@@ -30,7 +31,7 @@ const Dialogs = props => {
 
     return (
         <div className="dialogs">
-            <div className="dialogs__users">{dialogsElements}</div>
+            <div className="dialogs__users">{dialogsElements}</div> 
             <div className="dialogs__messages">
                 {messageElements}
                 <div className="dialogs__textarea">

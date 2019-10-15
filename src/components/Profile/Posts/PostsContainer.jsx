@@ -4,35 +4,61 @@ import {
   updateNewPostActionCreator
 } from "../../../redux/profileReducer";
 import Posts from "./Posts";
-import StoreContext from "../../../StoreContext";
-
-const PostsContainer = props => {
+import { connect } from "react-redux";
 
 
-  return (
-    <StoreContext.Consumer>
-      { store => {
-           let state = store.getState()
-            let addPost = () => {
-                let actionAdd = addPostActionCreator();
-                store.dispatch(actionAdd);
-              };
-            
-              let onPostChangeC = text => {
-                let actionChange = updateNewPostActionCreator(text);
-                store.dispatch(actionChange);
-              };
-         
-   return <Posts
-          newPosts={store.newPosts}
-          onPostChangeC={onPostChangeC}
-          addPost={addPost}
-          newPostText={state.profilePage.newPostText}
-          posts={state.profilePage.posts}
-        />;
-      }}
-    </StoreContext.Consumer>
-  );
-};
+
+let mapStateToProps = state => {
+    return {
+        newPostText: state.profilePage.newPostText,
+        posts: state.profilePage.posts,
+        newPosts: state.newPosts
+    }
+}
+
+
+let mapDispathToProps = dispatch => {
+    return {
+        addPost: () => { dispatch(addPostActionCreator()) },
+        onPostChangeC: (text ) => { dispatch(updateNewPostActionCreator(text)) }
+    }
+}
+
+const PostsContainer = connect(mapStateToProps, mapDispathToProps) (Posts)
 
 export default PostsContainer;
+
+
+
+
+
+
+
+// const PostsContainer = props => {
+
+
+//   return (
+//     <StoreContext.Consumer>
+//       { store => {
+//            let state = store.getState()
+//             let addPost = () => {
+//                 let actionAdd = addPostActionCreator();
+//                 store.dispatch(actionAdd);
+//               };
+            
+//               let onPostChangeC = text => {
+//                 let actionChange = updateNewPostActionCreator(text);
+//                 store.dispatch(actionChange);
+//               };
+         
+//    return <Posts
+//           newPosts={store.newPosts}
+//           onPostChangeC={onPostChangeC}
+//           addPost={addPost}
+//           newPostText={state.profilePage.newPostText}
+//           posts={state.profilePage.posts}
+//         />;
+//       }}
+//     </StoreContext.Consumer>
+//   );
+// };

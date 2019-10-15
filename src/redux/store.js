@@ -36,7 +36,7 @@ let store = {
                 { id: 3, message: "wvkla ef", likeCount: 39 },
                 { id: 4, message: "widwidffrfrfrf", likeCount: 4 }
             ],
-            newPostText: "123xxx"
+            newPostText: "new Text"
         },
 
         messagePage: {
@@ -57,7 +57,7 @@ let store = {
                 { id: 5, message: "wd2hlam byeb " },
                 { id: 6, message: "wqdoi  uwdnn" }
             ],
-            newMessageBody: ""
+            newMessageBody: "ывыв"
         }
     },
     _callSubscriber() {
