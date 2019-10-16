@@ -64,24 +64,19 @@ const usersReducer = (state = usersPage, action) => {
   }
 };
 
-export const followAC = id => ({ type: FOLLOW, id });
-export const toggleFetchingLoaderAC = toggle => ({ type: TOGGLE_IS_FETCHING, toggle });
-export const unFollowAC = id => ({ type: UN_FOLLOW, id });
-export const setUsersAC = users => ({ type: SET_USERS, users });
-export const setCurrentPageAC = currentPage => ({
+export const follow = id => ({ type: FOLLOW, id });
+export const fetchLoaderToggler = toggle => ({ type: TOGGLE_IS_FETCHING, toggle });
+export const unFollow = id => ({ type: UN_FOLLOW, id });
+export const setUsers = users => ({ type: SET_USERS, users });
+export const setCurrentPage = currentPage => ({
   type: SET_CUTRRENT_PAGE,
   currentPage
 });
-export const setUsersTotalCountAC = totalCount => ({
+export const setTotalUsersCount = totalCount => ({
   type: TOTAL_USERS_COUNT,
   totalCount
 });
 
 export default usersReducer;
 
-// { id: 1, photoURL:'https://www.w3schools.com/w3images/avatar2.png', fullname: "Victor Ivanov", status:'bla, bla', location:{city: 'Minsk', country: 'Belarus'}, followed: false },
-// { id: 2, photoURL:'https://www.w3schools.com/w3images/avatar2.png', fullname: "Victor Pupkin", status:'hui pizda Jigurga', location:{city: 'Siktivkar', country: 'Russia'}, followed: false },
-// { id: 3, photoURL:'https://www.w3schools.com/w3images/avatar2.png', fullname: "Almaz Sabirov", status:'kyrgystan popret', location:{city: 'Osh', country: 'Kyrgyzstan'}, followed: true },
-// { id: 4, photoURL:'https://www.w3schools.com/w3images/avatar2.png', fullname: "Ali Efazov", status:'Habib bibip', location:{city: 'Groznyi', country: 'Kavkaz'}, followed: false },
-// { id: 5, photoURL:'https://www.w3schools.com/w3images/avatar2.png', fullname: "Piere Lucio", status:'Ce la vie', location:{city: 'Paris', country: 'France'}, followed: false },
-// { id: 6, photoURL:'https://www.w3schools.com/w3images/avatar2.png', fullname: "John Doe", status:'g 59 the best blya budu', location:{city: 'New Orlean', country: 'USA'}, followed: true },
+

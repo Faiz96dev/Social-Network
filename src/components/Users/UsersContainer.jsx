@@ -1,5 +1,12 @@
 import UsersAPI from "./UsersAPI";
-import { followAC, unFollowAC, setUsersAC, setCurrentPageAC, setUsersTotalCountAC,toggleFetchingLoaderAC } from "../../redux/usersReducer";
+import {
+  follow,
+  unFollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  fetchLoaderToggler
+} from "../../redux/usersReducer";
 import { connect } from "react-redux";
 
 let mapStateToProps = state => {
@@ -11,33 +18,15 @@ let mapStateToProps = state => {
     isFetching: state.usersPage.isFetching
   };
 };
-let mapDispathToProps = dispatch => {
-  return {
-    follow: id => {
-      dispatch(followAC(id));
-    },
 
-    unFollow: id => {
-      dispatch(unFollowAC(id));
-    },
-    setUsers: users => {
-      dispatch(setUsersAC(users));
-    },
-    setCurrentPage: pageNumber => {
-      dispatch(setCurrentPageAC(pageNumber))
-    },
-    setTotalUsersCount: totalCount => {
-      dispatch(setUsersTotalCountAC(totalCount))
-    },
-    fetchLoaderToggler: toggle => {
-      dispatch(toggleFetchingLoaderAC(toggle))
-    }
-  };
-};
-
-const UsersContainer = connect(
+export default connect(
   mapStateToProps,
-  mapDispathToProps
+  {
+    follow,
+    unFollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    fetchLoaderToggler
+  }
 )(UsersAPI);
-
-export default UsersContainer;
