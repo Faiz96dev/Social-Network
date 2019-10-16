@@ -18,6 +18,9 @@ const Nav = (props) => {
         <div>
           <NavLink to="/news">News</NavLink>
         </div>
+        <div>
+          <NavLink to="/users">Users</NavLink>
+        </div>
       {/* <Friends dispatch={props.dispatch} data={props.friends.navFriendsData} /> */}
       </div>
     );
