@@ -31,31 +31,31 @@ let store = {
 
         profilePage: {
             posts: [
-                { id: 1, message: "widwidmwdm", likeCount: 4 },
-                { id: 2, message: "widw", likeCount: 1 },
-                { id: 3, message: "wvkla ef", likeCount: 39 },
-                { id: 4, message: "widwidffrfrfrf", likeCount: 4 }
+                {id: 1, message: "widwidmwdm", likeCount: 4},
+                {id: 2, message: "widw", likeCount: 1},
+                {id: 3, message: "wvkla ef", likeCount: 39},
+                {id: 4, message: "widwidffrfrfrf", likeCount: 4}
             ],
             newPostText: "new Text"
         },
 
         messagePage: {
             dialogsData: [
-                { id: 1, name: "Victor" },
-                { id: 2, name: "Andrey" },
-                { id: 3, name: "Valera" },
-                { id: 4, name: "Victor" },
-                { id: 5, name: "Victor" },
-                { id: 6, name: "Victor" }
+                {id: 1, name: "Victor"},
+                {id: 2, name: "Andrey"},
+                {id: 3, name: "Valera"},
+                {id: 4, name: "Victor"},
+                {id: 5, name: "Victor"},
+                {id: 6, name: "Victor"}
             ],
 
             messagesData: [
-                { id: 1, message: "Hi" },
-                { id: 2, message: "lornm" },
-                { id: 3, message: "Vadqwdwdwqa" },
-                { id: 4, message: "Vcasmcld  mwd wd " },
-                { id: 5, message: "wd2hlam byeb " },
-                { id: 6, message: "wqdoi  uwdnn" }
+                {id: 1, message: "Hi"},
+                {id: 2, message: "lornm"},
+                {id: 3, message: "Vadqwdwdwqa"},
+                {id: 4, message: "Vcasmcld  mwd wd "},
+                {id: 5, message: "wd2hlam byeb "},
+                {id: 6, message: "wqdoi  uwdnn"}
             ],
             newMessageBody: "ывыв"
         }
@@ -73,8 +73,8 @@ let store = {
 
     dispatch(action) {
 
-        this._state.profilePage = profileReducer( this._state.profilePage, action)
-        this._state.messagePage =  dialogsReducer(this._state.messagePage, action)
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagePage = dialogsReducer(this._state.messagePage, action)
         this._state.sidebar = sidebarReducer(this._state.sidebar, action)
         this._callSubscriber(this._state);
 

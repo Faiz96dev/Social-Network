@@ -1,6 +1,11 @@
 import React from 'react';
 import './ProfileInfo.css'
+import Preloader from "../../Common/preloader/Preloader";
 const ProfileInfo = props =>{
+
+    if(!props.profile){
+        return  <Preloader/>
+    }
     return(
         <div>
 <div className="img_container" >
@@ -9,11 +14,10 @@ const ProfileInfo = props =>{
 <div className="profile_ifo">
   <div className="profile_img"></div>
   <div className="profile_ouner">
-    <h3>Faiz</h3>
-    <p>Date of birth: 21.06.1996</p>
-    <p>City: Bishkek </p>
-    <p>Education: High </p>
-    <p>Web Site: example </p>
+
+    <h3>About me : {props.profile.aboutMe}</h3>
+    <p>Full name : {props.profile.fullName}</p>
+      <img src={props.profile.photos.large}/>
   </div>
 </div>
         </div>

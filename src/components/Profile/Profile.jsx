@@ -6,7 +6,7 @@ const Profile = props => {
     debugger
   return (
     <main className="profile">
-      <ProfileInfo />
+      <ProfileInfo profile={props.profile} />
       <PostsContainer store={props.store} />
     </main>
   );
