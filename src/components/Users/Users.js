@@ -2,6 +2,7 @@ import React from "react";
 import userPhoto from "../../img/post_img.png";
 import styles from "./Users.module.css";
 import {NavLink} from 'react-router-dom';
+import * as axios from "axios";
 
 let Users = props => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -48,7 +49,25 @@ let Users = props => {
             {u.followed ? (
               <button
                 onClick={() => {
-                  props.unFollow(u.id);
+                    axios
+                        .delete(
+                            `https://social-network.samuraijs.com/api/1.0/follow/${u.id}` ,{
+                                withCredentials:true,
+                                headers:{
+                                    "API-KEY": "93ecaf48-b0fe-4a38-b1d7-c9531ace3edb"
+                                }
+
+                            }
+                        )
+                        .then(response => {
+                            if (response.data.resultCode === 0){
+                                props.unFollow(u.id);
+                            }
+
+                        });
+
+
+
                 }}
               >
                 Unfollow
@@ -56,7 +75,21 @@ let Users = props => {
             ) : (
               <button
                 onClick={() => {
-                  props.follow(u.id);
+                    axios
+                        .post(
+                            `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {} ,{
+                                withCredentials:true,
+                                headers:{
+                                    "API-KEY": "93ecaf48-b0fe-4a38-b1d7-c9531ace3edb"
+                                }}
+                        )
+                        .then(response => {
+                         if (response.data.resultCode === 0){
+                             props.follow(u.id);
+                         }
+
+                        });
+
                 }}
               >
                 Follow

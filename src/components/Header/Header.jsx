@@ -9,9 +9,11 @@ const  Header = props => {
         <header className="header">
             <img className="logo" src="https://www.logogenie.net/download/preview/medium/3821905" alt="logo"/>
             <div className="loginBlock">
-                <NavLink to={'/login'}>
-                    Login
-                </NavLink>
+                {props.isAuth ? props.login : <NavLink to={'/login'}>
+                Login
+            </NavLink> }
+
+
             </div>
         </header>
 

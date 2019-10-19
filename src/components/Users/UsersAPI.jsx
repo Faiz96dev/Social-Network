@@ -8,7 +8,10 @@ class UsersAPI extends React.Component {
     this.props.fetchLoaderToggler(true)
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+          {
+            withCredentials:true
+          }
       )
       .then(response => {
         this.props.fetchLoaderToggler(false)
@@ -23,7 +26,10 @@ debugger
     this.props.setCurrentPage(pageNumber);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+          {
+            withCredentials: true
+          }
       )
       .then(response => {
         this.props.fetchLoaderToggler(false)
