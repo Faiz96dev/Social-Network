@@ -1,20 +1,25 @@
 import React from 'react';
-import './Header.css';
-import {NavLink} from "react-router-dom";
+import Header from "./Header";
+import * as axios from "axios";
+import  setUserData from '../../redux/authReducer'
 
-export default class Header extends React.Component  {
-  render() {
-  return (
-  <header className="header">
-   <img className="logo" src="https://www.logogenie.net/download/preview/medium/3821905" alt="logo"/>
-   <div className="loginBlock">
-       <NavLink to={'/login'}>
-        Login
-       </NavLink>
-   </div>
-  </header>
+export default class HeaderContainer extends React.Component  {
+    componentDidMount() {
+        axios.get("https://social-network.samuraijs.com/api/1.0/auth/me" , {
+                    withCredentials: true
+                }
+            )
+            .then(response => {
+              console.log(response)
 
-  );
+            });
+    }
+
+    render() {
+        return (
+      <Header props={this.props}/>
+
+        );
+    }
 }
-}
- 
+
