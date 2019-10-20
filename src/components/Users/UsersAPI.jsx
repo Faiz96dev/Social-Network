@@ -1,30 +1,16 @@
 import React from "react";
 import Users from "./Users";
-import * as axios from "axios";
 import Preloader from '../Common/preloader/Preloader'
-import {getUsers} from "../api/api";
+
  
 class UsersAPI extends React.Component {
   componentWillMount() {
-    this.props.fetchLoaderToggler(true)
-    getUsers(this.props.currentPage, this.props.pageSize)
-      .then(data => {
-        this.props.fetchLoaderToggler(false)
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount);
-        
-      });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize)
   }
 
   onPageChanged = pageNumber => {
-    this.props.fetchLoaderToggler(true)
-    this.props.setCurrentPage(pageNumber);
-    getUsers(pageNumber, this.props.pageSize)
-      .then(data => {
-        this.props.fetchLoaderToggler(false)
-        this.props.setUsers(data.items);
-      });
-      
+    this.props.getUsers(pageNumber, this.props.pageSize)
+
   };
 
   render() {
@@ -32,7 +18,10 @@ class UsersAPI extends React.Component {
   
     <Users  totalUsersCount={this.props.totalUsersCount} pageSize={this.props.pageSize}
      pages={this.props.pages} unFollow={this.props.unFollow} follow={this.props.follow}
-     currentPage={this.props.currentPage} onPageChanged={this.onPageChanged} users={this.props.users} />
+     currentPage={this.props.currentPage} onPageChanged={this.onPageChanged} users={this.props.users}
+            fetchFollowingProgress={this.props.fetchFollowingProgress}  followingInProgress={this.props.followingInProgress}
+            unFollowThunk={this.props.unFollowThunk} followThunk={this.props.followThunk}
+    />
      </>
   }
 }

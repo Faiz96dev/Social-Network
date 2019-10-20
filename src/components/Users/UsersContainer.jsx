@@ -1,11 +1,12 @@
 import UsersAPI from "./UsersAPI";
 import {
-  follow,
-  unFollow,
-  setUsers,
-  setCurrentPage,
-  setTotalUsersCount,
-  fetchLoaderToggler
+    follow,
+    unFollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    fetchLoaderToggler,
+    fetchFollowingProgress, getUsers, unFollowThunk, followThunk
 } from "../../redux/usersReducer";
 import { connect } from "react-redux";
 
@@ -15,7 +16,9 @@ let mapStateToProps = state => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+      followingInProgress: state.usersPage.followingInProgress,
+
   };
 };
 
@@ -27,6 +30,10 @@ export default connect(
     setUsers,
     setCurrentPage,
     setTotalUsersCount,
-    fetchLoaderToggler
+    fetchLoaderToggler,
+      fetchFollowingProgress,
+      getUsers,
+      unFollowThunk,
+      followThunk
   }
 )(UsersAPI);
