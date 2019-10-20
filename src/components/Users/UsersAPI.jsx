@@ -2,38 +2,27 @@ import React from "react";
 import Users from "./Users";
 import * as axios from "axios";
 import Preloader from '../Common/preloader/Preloader'
+import {getUsers} from "../api/api";
  
 class UsersAPI extends React.Component {
   componentWillMount() {
     this.props.fetchLoaderToggler(true)
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-          {
-            withCredentials:true
-          }
-      )
-      .then(response => {
+    getUsers(this.props.currentPage, this.props.pageSize)
+      .then(data => {
         this.props.fetchLoaderToggler(false)
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
+        this.props.setUsers(data.items);
+        this.props.setTotalUsersCount(data.totalCount);
         
       });
   }
-debugger
+
   onPageChanged = pageNumber => {
     this.props.fetchLoaderToggler(true)
     this.props.setCurrentPage(pageNumber);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-          {
-            withCredentials: true
-          }
-      )
-      .then(response => {
+    getUsers(pageNumber, this.props.pageSize)
+      .then(data => {
         this.props.fetchLoaderToggler(false)
-        this.props.setUsers(response.data.items);
+        this.props.setUsers(data.items);
       });
       
   };
