@@ -4,7 +4,10 @@ import Profile from "./Profile";
 import * as axios from "axios";
 import {connect} from "react-redux";
 import {setUserProfile} from "../../redux/profileReducer";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
+import {weithAuthRedirect, withAuthRedirect} from "../hoc/withAuthRedirect";
+import {compose} from "redux";
+import Dialogs from "../Dialogs/Dialogs";
 
 class ProfileContainer extends React.Component {
 
@@ -23,6 +26,7 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+
         return (
             <main className="profile">
                 <Profile profile={this.props.profile} {...this.props}/>
@@ -31,9 +35,18 @@ class ProfileContainer extends React.Component {
     }
 };
 
+
+
+
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
 });
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer)
-export default connect(mapStateToProps, {setUserProfile})(WithUrlDataContainerComponent);
+export default compose(
+    connect(mapStateToProps, {setUserProfile}),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer)
+
+
+

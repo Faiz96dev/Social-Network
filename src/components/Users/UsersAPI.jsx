@@ -21,6 +21,7 @@ class UsersAPI extends React.Component {
      currentPage={this.props.currentPage} onPageChanged={this.onPageChanged} users={this.props.users}
             fetchFollowingProgress={this.props.fetchFollowingProgress}  followingInProgress={this.props.followingInProgress}
             unFollowThunk={this.props.unFollowThunk} followThunk={this.props.followThunk}
+            isAuth={this.props.isAuth}
     />
      </>
   }
