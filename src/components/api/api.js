@@ -29,4 +29,21 @@ export const usersAPI = {
 
 }
 
+export const profileAPI ={
+    getUsers (currentPage, pageSize)  {
+        return instance.get( `users?page=${currentPage}&count=${pageSize}`)
+
+            .then(response => {
+                return response.data
+            });
+    },
+    getStatus(id){
+       return  instance.get(`profile/status/` + id)
+
+    },
+    updateStatus(status){
+       return  instance.put(`profile/status`, {status})
+
+    }
+}
 
