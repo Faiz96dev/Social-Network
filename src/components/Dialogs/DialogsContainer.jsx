@@ -19,12 +19,11 @@ let mapStateToProps = state => {
 
 let mapDispathToProps = dispatch => {
     return {
-        sendMessage: () => {
-            dispatch(sendMessageCreator())
+        sendMessage: (newMessageBody) => {
+
+            dispatch(sendMessageCreator(newMessageBody))
         },
-        onNewMessageClickC: (body) => {
-            dispatch(updateNewMessageBody(body))
-        }
+
     }
 }
 
