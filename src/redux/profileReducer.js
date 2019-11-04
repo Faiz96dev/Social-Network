@@ -1,5 +1,6 @@
-import { profileAPI } from "../components/api/api";
+import {profileAPI} from "../components/api/api";
 
+const MY_PROFILE = "MY_PROFILE"
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -32,39 +33,39 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             };
-            
+
         }
-        
+
         case SET_STATUS: {
             return {
                 ...state,
                 status: action.status
             };
-            
+
         }
         default:
             return state;
     }
 };
-
+export const getMyProfile = (profile) => ({type: MY_PROFILE, profile })
 export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText});
 export const updateNewPostActionCreator = text => ({type: UPDATE_NEW_POST_TEXT, newText: text});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status) => ({type: SET_STATUS, status});
 export const getStatus = (id) => (dispatch) => {
     profileAPI.getStatus(id)
-    .then(responce =>{
-        dispatch(setStatus(responce.data))
-    })
+        .then(responce => {
+            dispatch(setStatus(responce.data))
+        })
 }
 export const updateStatus = (status) => (dispatch) => {
     profileAPI.updateStatus(status)
-    .then(responce =>{
-        if (responce.data.resultCode === 0){
-            dispatch(setStatus(status))
-        }
-        else{console.log('ERROR UPDATE STATUS')}
-       
-    })
+        .then(responce => {
+            if (responce.data.resultCode === 0) {
+                dispatch(setStatus(status))
+            } else {
+                console.log('ERROR UPDATE STATUS')
+            }
+        })
 }
 export default profileReducer;
