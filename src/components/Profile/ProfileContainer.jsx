@@ -56,7 +56,6 @@ export default compose(
     mapStateToProps,
     { setUserProfile, getStatus, updateStatus }
   ),
-
   withAuthRedirect,
   withRouter
 )(ProfileContainer);
