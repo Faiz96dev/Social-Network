@@ -28,17 +28,12 @@ let initialState = {
 const sidebarReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_FRIENDS: {
-
             return state;
         }
-
         default:
             return state;
-
     }
 };
 
-export const GetFirendsList = () => ({ type: GET_FRIENDS });
-
-
+export const GetFirendsList = () => ({type: GET_FRIENDS});
 export default sidebarReducer;
